@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="io.recruit.modules.sys.dao.SysDictDao">
+
+	<!-- 可根据自己的需求，是否要使用 -->
+    <resultMap type="io.recruit.modules.sys.entity.SysDictEntity" id="sysDictMap">
+        <result property="id" column="id"/>
+        <result property="dictName" column="dict_name"/>
+        <result property="dictCode" column="dict_code"/>
+        <result property="description" column="description"/>
+        <result property="delFlag" column="del_flag"/>
+        <result property="createName" column="create_name"/>
+        <result property="createTime" column="create_time"/>
+        <result property="updateName" column="update_name"/>
+        <result property="updateTime" column="update_time"/>
+    </resultMap>
+
+    <sql id="BaseColumn">
+        ${alias}.dict_name,
+        ${alias}.dict_code,
+        ${alias}.id AS dict_id,
+        ${alias}.description,
+        ${alias}.del_flag,
+        ${alias}.create_name,
+        ${alias}.create_time,
+        ${alias}.update_name,
+        ${alias}.update_time
+    </sql>
+
+    <resultMap id="DictCacheMap" type="io.recruit.modules.sys.dto.DictTypeDTO">
+        <collection property="items" javaType="ArrayList" ofType="io.recruit.modules.sys.entity.SysDictItemEntity"
+                     column="dict_id" select="io.recruit.modules.sys.dao.SysDictItemDao.queryObjectByDictId" />
+    </resultMap>
+
+    <select id="queryAll" resultMap="DictCacheMap">
+        SELECT
+        <include refid="BaseColumn" >
+            <property name="alias" value="a" />
+        </include>
+        FROM sys_dict a
+    </select>
+</mapper>

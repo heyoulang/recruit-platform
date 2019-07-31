@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="io.recruit.modules.manage.dao.RcRecruitInfoDao">
+
+	<!-- 可根据自己的需求，是否要使用 -->
+    <resultMap type="io.recruit.modules.manage.entity.RcRecruitInfoEntity" id="rcRecruitInfoMap">
+        <result property="rcId" column="rc_id"/>
+        <result property="epId" column="ep_id"/>
+        <result property="recruitStatus" column="recruit_status"/>
+        <result property="recruitNum" column="recruit_num"/>
+        <result property="post" column="post"/>
+        <result property="invalidSignNum" column="invalid_sign_num"/>
+        <result property="salary" column="salary"/>
+        <result property="customColumn" column="custom_column"/>
+        <result property="label" column="label"/>
+        <result property="publishTime" column="publish_time"/>
+        <result property="invalidTime" column="invalid_time"/>
+        <result property="remark" column="remark"/>
+        <result property="createName" column="create_name"/>
+        <result property="createTime" column="create_time"/>
+        <result property="updateName" column="update_name"/>
+        <result property="updateTime" column="update_time"/>
+    </resultMap>
+
+
+</mapper>
